@@ -20,7 +20,6 @@ movies['lead actor'] = movies['actors'].str.split('|').apply(lambda x:x[0])
 
 # 1. astype() - to change the datatype of a column
 ipl['ID'] = ipl['ID'].astype('int32')
-
 ipl['Season'] = ipl['Season'].astype('category')
 
 
