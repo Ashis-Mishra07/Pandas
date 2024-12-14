@@ -11,7 +11,7 @@ import pandas as pd
 # sample
 # nunique
 
-movies = pd.read_csv('/content/imdb-top-1000.csv')
+movies = pd.read_csv('/content/imdb-taop-1000.csv')
 
 
 # total groups formed
