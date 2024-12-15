@@ -22,6 +22,7 @@ movies['Genre'].nunique()
 movies.groupby('Genre').size() # in a table how many rows covered by each grp but return in asc order of name
 movies.groupby('Genre').value_counts() # same as above but return in desc order of value counts
 '''
+
 Genre
 Action       172
 Adventure     72
@@ -38,6 +39,7 @@ Mystery       12
 Thriller       1
 Western        4
 dtype: int64
+
 '''
 
 
