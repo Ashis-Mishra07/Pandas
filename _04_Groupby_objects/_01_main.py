@@ -19,8 +19,10 @@ movies.groupby('Genre')['Gross'].sum().sort_values(ascending=False).head(3) # or
 # find the genre with highest avg IMDB rating
 movies.groupby('Genre')['IMDB_Rating'].mean().sort_values(ascending=False).head(1)
 
+
 # find director with most popularity
 movies.groupby('Director')['No_of_Votes'].sum().sort_values(ascending=False).head(1)
+
 
 # find number of movies done by each actor
 movies['Star1'].value_counts()
