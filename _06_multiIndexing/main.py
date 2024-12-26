@@ -170,12 +170,39 @@ NOTE : In case of Unstacking the the multiindex at row level that is present wil
 '''
 
 
+# Fetching Data from Multiindex Dataframe
+
+# Extracting rows single
+branch_df3.loc[('cse',2022)]
+# multiple
+branch_df3.loc[('cse',2019):('ece',2020):2]
+# using iloc
+branch_df3.iloc[0:5:2] # gives the row 0,2,4
 
 
+# Extracting cols
+branch_df3['delhi']['students']
+branch_df3.iloc[:,1:3] # gives the entire row for 1 and 2 indexed cols
 
 
+# Extracting both
+branch_df3.iloc[[0,4],[1,2]] # return frorm 0 to 4 row and 1 to 2 col
 
 
+# sort index
+# both -> descending -> diff order
+# based on one level
+branch_df3.sort_index(ascending=False)
+branch_df3.sort_index(ascending=[False,True]) # it will sort the level0 in descending and level1 in ascending in multilevel index
+branch_df3.sort_index(level=0,ascending=[False]) # it will sort the level0 specifically in descending order
+
+
+# multiindex dataframe(col) -> transpose
+branch_df3.transpose()
+
+# swaplevel
+branch_df3.swaplevel(axis=1) # it will swap the level of multiindexing in cols
+branch_df3.swaplevel(axis=0) # it will swap the level of multiindexing in rows
 
 
 
