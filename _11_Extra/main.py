@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-# Binning concept
+#1  Binning concept
 
 '''
 The main motive of doing it to categories the data as per our bin size and bin style
@@ -17,7 +17,14 @@ data['categories'] = pd.cut(data, bins, labels=group_names , include_lowest=True
 
 
 
-# How to handle categorial data 
+
+
+
+
+
+
+
+#2 How to handle categorial data 
 # One-Hot Encoding , Label Encoding
 
 '''
@@ -60,3 +67,78 @@ type(data) # numpy.ndarray
 
 data= pd.DataFrame(data) # converting it into the  dataframe but it will remove the column names
 data.columns = ['column1', 'column2', 'column3'] # adding the column names accordingly
+
+
+
+
+
+
+
+
+
+
+
+
+#3 Splitting of the dataset
+#  It means dividing the dataset into training and testing dataset
+
+'''
+Why the need to split the dataset?
+
+The main motive of splitting the dataset is to train the model on the training dataset and
+then test the model on the testing on unknown dataset .
+'''
+#NOTE: continuing with the encoded data
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1)
+# test_size is the size of the testing dataset here given as 20%
+# random_state is used to make the split same everytime , means to randomly chosen the rows for testing or training
+
+
+
+
+
+
+
+
+#4 Feature Scaling
+
+'''
+This is basically used to scale the data in the same range so that the model can be trained properly
+and suppose if a number is very high as compared with the other and it will dominate the overall term.
+So in order to adjust it, we need to scale the data  accordingly .
+
+The value gets bound within a fixed range only .
+
+
+Types:
+    Simple Feature Scaling 
+        x = x/max(x)
+    
+    Min-Max Scaling(Normalisation) lies between -3 to 3
+        x = (x - min(x))/(max(x) - min(x))
+
+    Z-Score Normalisation(Standardisation) lies between 0 to 3
+        x = (x - mean(x))/std(x)
+
+'''
+
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+
+X_train.iloc[:, 3:] = sc.fit_transform(X.iloc[:, 3:]) 
+# fit -> calculate the mean and std for the entire row or col
+# transform -> apply the formula to the entire row or col
+
+X_test.iloc[:, 3:] = sc.transform(X_test.iloc[:, 3:]) 
+# here we are not fitting the data because we have already fitted the 
+# data on the training dataset and we do not calculate the mean and std again here
+
+#NOTE: We do not need to scale the y because it is the dependent variable and it is 
+#      not necessary to scale it
+
+
+
+
